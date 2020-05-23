@@ -32,7 +32,6 @@
     var url1 = "http://localhost:8080/addCookie?cookie=";
     var url2 = "http://localhost:8081/addCookie?cookie=";
 
-
     function login(){
         var user = $("#username").val()
 
@@ -48,26 +47,8 @@
             type: "get",
             dataType: "jsonp"
         })
-        // alert(form)
     }
 
-/*    $(function () {
-        //后台的所有域名
-        var params = [[${sendparam}]];
-        if (params == null) {
-            return;//中断执行
-        }
-        var arrDomain = params.cookieurl;
-        jQuery.each(arrDomain, function () {  // this 指定值
-            //循环访问
-            $.ajax({
-                url: this + "?cookieName=" + params.cookieName + "&cookieValue=" + params.cookieValue,
-                type: "get",
-                dataType: "jsonp" //指定服务器返回的数据类型
-            });
-        });
-    })*/
-    /*]]>*/
 </script>
 
 </body>
