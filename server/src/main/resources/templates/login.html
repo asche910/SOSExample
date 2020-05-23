@@ -1,0 +1,74 @@
+<html xmlns:th="https://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+</head>
+<body>
+
+<div th:if="${msg}">
+    <h2 th:text="${msg}"/>
+</div>
+<form id="login-form" action="/login" method="post">
+    <table>
+        <tr>
+            <td>UserName:</td>
+            <td><input id="username" name="username"/></td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input name="password" type="password"/></td>
+        </tr>
+        <tr>
+            <td><input name="Submit" value="Submit" type="button" onclick="login()"></td>
+        </tr>
+    </table>
+</form>
+
+<script src="/js/jquery.min.js"></script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    var url1 = "http://localhost:8080/addCookie?cookie=";
+    var url2 = "http://localhost:8081/addCookie?cookie=";
+
+
+    function login(){
+        var user = $("#username").val()
+
+        $("form#login-form").submit();
+
+        $.ajax({
+            url: url1 + user,
+            type: "get",
+            dataType: "jsonp"
+        })
+        $.ajax({
+            url: url2 + user,
+            type: "get",
+            dataType: "jsonp"
+        })
+        // alert(form)
+    }
+
+/*    $(function () {
+        //后台的所有域名
+        var params = [[${sendparam}]];
+        if (params == null) {
+            return;//中断执行
+        }
+        var arrDomain = params.cookieurl;
+        jQuery.each(arrDomain, function () {  // this 指定值
+            //循环访问
+            $.ajax({
+                url: this + "?cookieName=" + params.cookieName + "&cookieValue=" + params.cookieValue,
+                type: "get",
+                dataType: "jsonp" //指定服务器返回的数据类型
+            });
+        });
+    })*/
+    /*]]>*/
+</script>
+
+</body>
+</html>
