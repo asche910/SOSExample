@@ -25,13 +25,12 @@ public class LoginController {
 
     @PostMapping("/login")
     public String login(String username, String password,
-                        HttpServletRequest request, HttpServletResponse response, Model model) throws IOException {
+                        HttpServletRequest request, Model model) throws IOException {
         String url = String.format("http://localhost:9090/login?username=%s&password=%s", username, password);
         String responseContent = HttpUtils.getResponseContent(url);
         System.out.println("login:" + responseContent);
         if("1".equals(responseContent)){
             request.getSession().setAttribute("user", username);
-            response.addCookie(new Cookie("msg", "helloworld"));
             return "redirect:home";
         }
         model.addAttribute("msg", "login failed!");
